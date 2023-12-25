@@ -16,7 +16,7 @@ So i tried to use two diffrent files here
 
 <img src="https://github.com/Sanjay0302/galaxybook_mask/assets/90672297/11e670e2-6117-42d8-beca-14ea0992f63b" alt="Admin confirmation window" width="300" height="200" />
 
-`So using this method the terminal popup is avoided but the Administrator confirmation UAC will be popped up that askes yes or no calling is `
+`So using this method the terminal popup is avoided but the Administrator confirmation UAC will be popped up that askes yes or no evrytime the system starts `
 
 SamsungMask.ps1
 ```pwsh
@@ -30,5 +30,5 @@ runner.vbs
 Set objShell = CreateObject("WScript.Shell")
 objShell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""path\to\SamsungMask.ps1""", 0, True
 ```
-Dont Forget to change the path for `SamsungMask` in runner.vbs
+Dont Forget to change the path of `SamsungMask.ps1` in `runner.vbs`
 
