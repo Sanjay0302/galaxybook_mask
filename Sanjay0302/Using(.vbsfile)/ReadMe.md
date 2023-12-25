@@ -35,3 +35,38 @@ objShell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""path\to\
 ```
 Dont Forget to change the path of `SamsungMask.ps1` in `runner.vbs`
 
+
+
+
+`ChatGpt Explaination below`
+If the UAC (User Account Control) prompt is persisting, it means that the operation requires administrative privileges, and UAC is configured to prompt for confirmation. Unfortunately, completely bypassing UAC prompts programmatically is generally not recommended for security reasons.
+
+However, if you want to minimize the UAC prompts, you can consider creating a scheduled task to run the PowerShell script with the highest privileges. This way, the task scheduler may handle the elevation without prompting. Here's how you can modify your approach:
+
+1. **Create a PowerShell script (`SetRegistryValues.ps1`):**
+   ```powershell
+   # Set registry values using PowerShell cmdlets
+   New-ItemProperty -Path 'HKLM:\HARDWARE\DESCRIPTION\System\BIOS' -Name 'SystemProductName' -Value 'NP960XFG-KC4UK' -PropertyType 'String' -Force
+   New-ItemProperty -Path 'HKLM:\HARDWARE\DESCRIPTION\System\BIOS' -Name 'SystemManufacturer' -Value 'Samsung' -PropertyType 'String' -Force
+   ```
+
+2. **Create a scheduled task PowerShell script (`RunPowerShellTask.ps1`):**
+   ```powershell
+   $Action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-ExecutionPolicy Bypass -File "C:\Path\To\SetRegistryValues.ps1"'
+   $Trigger = New-ScheduledTaskTrigger -AtStartup
+   $Principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount
+   Register-ScheduledTask -Action $Action -Trigger $Trigger -Principal $Principal -TaskName "SetRegistryValuesTask" -Force
+   ```
+
+   Replace `"C:\Path\To\SetRegistryValues.ps1"` with the actual path to your PowerShell script.
+
+3. **Run the scheduled task script as administrator:**
+   Open an elevated PowerShell prompt and run the following command:
+   ```powershell
+   .\RunPowerShellTask.ps1
+   ```
+
+This approach creates a scheduled task to run the PowerShell script at startup with elevated privileges. The task scheduler may handle the elevation without prompting for user confirmation. Please note that creating scheduled tasks requires administrative rights.
+
+Remember that bypassing UAC prompts may have security implications, and it's important to understand the risks associated with such actions.
+
