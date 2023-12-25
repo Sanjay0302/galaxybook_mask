@@ -18,14 +18,17 @@ So i tried to use two diffrent files here
 
 `So using this method the terminal popup is avoided but the Administrator confirmation UAC will be popped up that askes yes or no evrytime the system starts `
 
-SamsungMask.ps1
+`SamsungMask.ps1`
+
 ```pwsh
+# SamsungMask.ps1
 # Set registry values using reg.exe
 Start-Process reg -ArgumentList 'add "HKLM\HARDWARE\DESCRIPTION\System\BIOS" /v SystemProductName /t REG_SZ /d "NP960XFG-KC4UK" /f' -Verb RunAs -Wait
 Start-Process reg -ArgumentList 'add "HKLM\HARDWARE\DESCRIPTION\System\BIOS" /v SystemManufacturer /t REG_SZ /d "Samsung" /f' -Verb RunAs -Wait
 ```
 
-runner.vbs
+`runner.vbs`
+
 ```vbs
 Set objShell = CreateObject("WScript.Shell")
 objShell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""path\to\SamsungMask.ps1""", 0, True
