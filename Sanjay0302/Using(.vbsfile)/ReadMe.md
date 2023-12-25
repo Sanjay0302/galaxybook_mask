@@ -13,6 +13,7 @@ So i tried to use two diffrent files here
 3. Note that these 2 files has to be moved to manually `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` to run at startup as i have not included any logic to copy these files to the startup folder i mentioned. Ofcource we can add that commands for copying if we want.
 
 `This Popup will be shown instead of terminal every time the device startup `
+
 <img src="https://github.com/Sanjay0302/galaxybook_mask/assets/90672297/11e670e2-6117-42d8-beca-14ea0992f63b" alt="Admin confirmation window" width="300" height="200" />
 
 `So using this method the terminal popup is avoided but the Administrator confirmation UAC will be popped up that askes yes or no calling is `
