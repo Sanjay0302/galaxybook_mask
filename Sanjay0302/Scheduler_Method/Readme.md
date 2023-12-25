@@ -4,8 +4,13 @@ But to avoid this confirmation every time we can use task scheduler application 
 That takes the task of running the .ps1 file with high priority which even wont ask for confirmation
 
 So first save the SamsungMask.ps1 file where ever user require
-Or we can make use of commands that can copy this .ps1 to specific location 
-oncewe know the path of the file we can schedule the task for this file  
+SamsungMask.ps1
+```pwsh
+# Set registry values using PowerShell cmdlets
+New-ItemProperty -Path 'HKLM:\HARDWARE\DESCRIPTION\System\BIOS' -Name 'SystemProductName' -Value 'NP960XFG-KC4UK' -PropertyType 'String' -Force
+New-ItemProperty -Path 'HKLM:\HARDWARE\DESCRIPTION\System\BIOS' -Name 'SystemManufacturer' -Value 'Samsung' -PropertyType 'String' -Force
+```
+Or we can make use of commands that can copy this .ps1 to specific location, once we know the path of the file we can schedule the task for this file  
 
 To schedule the task manually we can run the below commands in Powershell with administrator privillage one by one
 
