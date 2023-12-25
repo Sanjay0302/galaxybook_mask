@@ -10,8 +10,10 @@ So i tried to use two diffrent files here
 2. And to run this .ps1 file without popping up the terminal - I included .vbs file as runner for the .ps1 file
   - `Note I only tried to add the method we can use`
   - So we need to mention the Path for the .ps1 file in .vbs file
-3. Note that these 2 files has to be moved to `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` to run at startup as i have not included any logic to decide the location
+3. Note that these 2 files has to be moved to manually `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` to run at startup as i have not included any logic to copy these files to the startup folder i mentioned. Ofcource we can add that commands for copying if we want.
 
+`This Popup will be shown instead of terminal every time the device startup `
+![WhatsApp Image 2023-12-25 at 16 05 11_34fa92da](https://github.com/Sanjay0302/galaxybook_mask/assets/90672297/11e670e2-6117-42d8-beca-14ea0992f63b)
 
 `So using this method the terminal popup is avoided but the Administrator confirmation UAC will be popped up that askes yes or no calling is `
 
@@ -28,3 +30,4 @@ Set objShell = CreateObject("WScript.Shell")
 objShell.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ""path\to\SamsungMask.ps1""", 0, True
 ```
 Dont Forget to change the path for `SamsungMask` in runner.vbs
+
